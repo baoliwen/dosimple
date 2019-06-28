@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dosimple.biz.shop.mapper.OrderInfoMapper">
+    <insert id="insert">
+        INSERT INTO `t_order` (`id`,`user_id`, `order_id`, `order_no`, `isactive`, `inserttime`, `updatetime`)
+        VALUES (#{id},#{userId}, #{orderId}, #{orderNo}, #{isactive}, #{inserttime}, #{updatetime});
+
+    </insert>
+    <select id="selectById" resultType="com.dosimple.biz.shop.entity.Order">
+        SELECT id,user_id as userId,order_id as orderId,order_no as orderNo,isactive,inserttime,updatetime FROM t_order where id = #{id}
+    </select>
+    <select id="selectByOrderId" resultType="com.dosimple.biz.shop.entity.Order">
+        SELECT id,user_id as userId,order_id as orderId,order_no as orderNo,isactive,inserttime,updatetime
+        FROM t_order where order_id = #{orderId}
+    </select>
+
+</mapper>
