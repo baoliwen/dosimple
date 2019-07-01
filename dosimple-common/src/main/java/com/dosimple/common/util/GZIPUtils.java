@@ -1,6 +1,7 @@
-package com.dosimple.common.util;
+package com.mfcar.stark.platform.util;
 
 import ch.qos.logback.core.util.CloseUtil;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +13,7 @@ import java.util.zip.GZIPOutputStream;
 public class GZIPUtils {
     private GZIPUtils() {
     }
+
     private static final String GZIP_ENCODE_UTF_8 = "UTF-8";
     private static final String GZIP_ENCODE_ISO_8859_1 = "ISO-8859-1";
 
@@ -86,7 +88,6 @@ public class GZIPUtils {
         }
         return result;
     }
-
     public static String uncompressToString(String str,String outEncoding){
         if (str == null || str.length() == 0) {
             return str;
@@ -121,6 +122,62 @@ public class GZIPUtils {
 
     public static String uncompressToString(String data) {
         return uncompressToString(data, GZIP_ENCODE_UTF_8);
+    }
+
+    /**
+     * 使用gzip进行压缩
+     */
+    public static String gzipToBase64String(String primStr) {
+        if (primStr == null || primStr.length() == 0) {
+            return primStr;
+        }
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        GZIPOutputStream gzip=null;
+        try {
+            gzip = new GZIPOutputStream(out);
+            gzip.write(primStr.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            CloseUtil.closeQuietly(gzip);
+        }
+        return Base64.encodeBase64String(out.toByteArray());
+    }
+
+    /**
+     *
+     * <p>Description:使用gzip进行解压缩</p>
+     * @param compressedStr
+     * @return
+     */
+    public static String gunzipBase64String(String compressedStr){
+        if(compressedStr==null){
+            return null;
+        }
+        ByteArrayOutputStream out= new ByteArrayOutputStream();
+        ByteArrayInputStream in=null;
+        GZIPInputStream ginzip=null;
+        byte[] compressed=null;
+        String decompressed = null;
+        try {
+            compressed = Base64.decodeBase64(compressedStr);
+            in=new ByteArrayInputStream(compressed);
+            ginzip=new GZIPInputStream(in);
+
+            byte[] buffer = new byte[1024];
+            int offset;
+            while ((offset = ginzip.read(buffer)) != -1) {
+                out.write(buffer, 0, offset);
+            }
+            decompressed=out.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            CloseUtil.closeQuietly(ginzip);
+            CloseUtil.closeQuietly(in);
+            CloseUtil.closeQuietly(out);
+        }
+        return decompressed;
     }
 
 }
