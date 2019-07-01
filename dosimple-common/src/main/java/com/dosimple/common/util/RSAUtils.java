@@ -1,5 +1,6 @@
-package com.mfcar.stark.platform.util;
+package com.dosimple.common.util;
 
+import cn.hutool.crypto.asymmetric.RSA;
 import org.springframework.util.Base64Utils;
 
 import javax.crypto.Cipher;
@@ -272,7 +273,7 @@ public class RSAUtils {
      */
     public static String getPrivateKey(Map<String, Key> keyMap) throws Exception {
         Key key = keyMap.get(PRIVATE_KEY);
-        return new String(Base64Utils.encode(key.getEncoded()));
+        return Base64Utils.encodeToString(key.getEncoded());
     }
 
     /**
@@ -286,6 +287,6 @@ public class RSAUtils {
      */
     public static String getPublicKey(Map<String, Key> keyMap) throws Exception {
         Key key = keyMap.get(PUBLIC_KEY);
-        return new String(Base64Utils.encode(key.getEncoded()));
+        return Base64Utils.encodeToString(key.getEncoded());
     }
 }

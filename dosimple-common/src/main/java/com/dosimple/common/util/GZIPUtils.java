@@ -1,7 +1,7 @@
-package com.mfcar.stark.platform.util;
+package com.dosimple.common.util;
 
 import ch.qos.logback.core.util.CloseUtil;
-import org.apache.commons.codec.binary.Base64;
+import org.springframework.util.Base64Utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -141,7 +141,7 @@ public class GZIPUtils {
         }finally{
             CloseUtil.closeQuietly(gzip);
         }
-        return Base64.encodeBase64String(out.toByteArray());
+        return Base64Utils.encodeToString(out.toByteArray());
     }
 
     /**
@@ -160,7 +160,7 @@ public class GZIPUtils {
         byte[] compressed=null;
         String decompressed = null;
         try {
-            compressed = Base64.decodeBase64(compressedStr);
+            compressed = Base64Utils.decodeFromString(compressedStr);
             in=new ByteArrayInputStream(compressed);
             ginzip=new GZIPInputStream(in);
 
