@@ -23,7 +23,7 @@ ps:此处的饭非本人撰写,只是本人在搭建时参考过博文。
 - prometheus + Grafana,<a href="http://www.itmuch.com/spring-boot/actuator-prometheus-grafana/" target="_blank">饭在这里</a>
 - search-user,search-shop模块resources有需要执行的sql语句
 - elastic-job控制台，<a href="https://blog.csdn.net/qq_31289187/article/details/84843044" target="_blank">饭在这里</a>
-#### 说明(很多demo放在单元测试中)
+#### 说明(demo放在单元测试中)
 
 - dosimple-biz-shop,dosimple-biz-user有feign rpc调用demo,hyxtrix熔断
 - dosimple-common模块中FiltUtils可以多线程读取文件并计算单词数量, 多线程分割文件
