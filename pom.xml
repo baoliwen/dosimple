@@ -38,7 +38,7 @@
 		<elastic-job.version>2.1.5</elastic-job.version>
 		<mybatis-plus-boot-starter.version>3.1.0</mybatis-plus-boot-starter.version>
 		<druid.version>1.1.10</druid.version>
-		<mysql.version>5.1.47</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 		<lcn.version>4.1.0</lcn.version>
 		<eureka-client.version>2.1.0.RELEASE</eureka-client.version>
 		<codingapi.txlcn.version>5.0.2.RELEASE</codingapi.txlcn.version>
