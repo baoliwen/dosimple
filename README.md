@@ -57,8 +57,8 @@ ps:此处的饭非本人撰写,只是本人在搭建时参考过博文。
         }
     }
 ```
-- dosimple-idgenerator 原本想实现<a href="https://tech.meituan.com/2017/04/21/mt-leaf.html" target="_blank">美团的ID生成系统的</a>,
-后来发现，美团已经将该实现共享了。。。后续直接将此处直接引入[美团leaf](https://github.com/Meituan-Dianping/Leaf)
+- dosimple-idgenerator 引用了<a href="https://tech.meituan.com/2017/04/21/mt-leaf.html" target="_blank">美团的ID生成系统的</a>,
+[美团leaf](https://github.com/Meituan-Dianping/Leaf)
 - to be continued
  
 
